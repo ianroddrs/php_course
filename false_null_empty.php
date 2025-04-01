@@ -1,66 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Curso PHP</title>
 </head>
+
 <body>
     <?php
-        // false -> boolean
+    //false (true/false) - tipo variável boolean
+    //null e empty - valores especiais
 
-        // null e empty -> valores especiais
+    $funcionario1 = null; //somente pode ser null
+    $funcionario2 = ''; //pode ser null ou vazio
+    $funcionario3 = false; //pode ser false ou vazio
 
-        $funcionario1 = null;
-        $funcionario2 = '';
-        $funcionario3 = false;
+    //valores null
+    if(is_null($funcionario1)){ 
+        echo 'Sim, a variável é null';
+    } else {
+        echo 'Não, a variável não é null';
+    }
+    echo '<br />';
+    if(is_null($funcionario2)){ 
+        echo 'Sim, a variável é null';
+    } else {
+        echo 'Não, a variável não é null';
+    }
+    echo '<hr />';
+    //valores vazios
+    if(empty($funcionario1)){ 
+        echo 'Sim, a variável é vazia';
+    } else {
+        echo 'Não, a variável não é vazia';
+    }
 
-        if(is_null($funcionario1)){
-            echo 'Sim, a variável é null';
-        }else{
-            echo 'Não, a variavel não é null';
-        }
+    echo '<br />';
+    if(empty($funcionario2)){ 
+        echo 'Sim, a variável é vazia';
+    } else {
+        echo 'Não, a variável não é vazio';
+    }
 
-        echo '<br>';
-
-        if(is_null($funcionario2)){
-            echo 'Sim, a variável é null';
-        }else{
-            echo 'Não, a variavel não é null';
-        }
-
-        echo '<br>';
-
-        if(is_null($funcionario3)){
-            echo 'Sim, a variável é null';
-        }else{
-            echo 'Não, a variavel não é null';
-        }
-
-        echo '<hr>';
-
-        if(empty($funcionario1)){
-            echo 'Sim, a variável é empty';
-        }else{
-            echo 'Não, a variavel não é empty';
-        }
-
-        echo '<br>';
-
-        if(empty($funcionario2)){
-            echo 'Sim, a variável é empty';
-        }else{
-            echo 'Não, a variavel não é empty';
-        }
-
-        echo '<br>';
-
-        if(empty($funcionario3)){
-            echo 'Sim, a variável é empty';
-        }else{
-            echo 'Não, a variavel não é empty';
-        }
-
+    echo '<br />';
+    if(empty($funcionario3)){ 
+        echo 'Sim, a variável é vazia';
+    } else {
+        echo 'Não, a variável não é vazia';
+    }
     ?>
 </body>
+
 </html>
