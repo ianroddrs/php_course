@@ -27,22 +27,25 @@
     
 
     $usuario_autenticado = false;
+    $usuario_id = null;
 
     $usuarios_app = [
-        ['email' => 'ian@teste.com', 'senha' => '123123'],
-        ['email' => 'outro@teste.com', 'senha' => 'abcabc']
+        ['id' => 1, 'email' => 'ian@teste.com', 'senha' => '123123'],
+        ['id' => 2,'email' => 'outro@teste.com', 'senha' => 'abcabc']
     ];
 
     foreach($usuarios_app as $user){
 
         if($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']){
             $usuario_autenticado = true;
+            $usuario_id = $user['id'];
         }
         
     }
 
     if($usuario_autenticado){
         $_SESSION['autenticado'] = true;
+        $_SESSION['id'] = $usuario_id;
         header('Location: home.php');
     }else{
         $_SESSION['autenticado'] = false;
