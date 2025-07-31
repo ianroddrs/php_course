@@ -76,6 +76,9 @@
                 echo 'Não, o valor pesquisado não existe no array';
             }
             
+
+            // isset - verificar se existe
+            // unset - remover um indice do array
         ?>
 
     </body>
