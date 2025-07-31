@@ -32,26 +32,26 @@
               <div class="row">
                 <div class="col">
                   
-                  <form>
+                  <form method="POST" action="registrar_chamado.php" >
                     <div class="form-group">
                       <label>Título</label>
-                      <input type="text" class="form-control" placeholder="Título">
+                      <input type="text" class="form-control" placeholder="Título" name=titulo>
                     </div>
                     
                     <div class="form-group">
                       <label>Categoria</label>
-                      <select class="form-control">
-                        <option>Criação Usuário</option>
-                        <option>Impressora</option>
-                        <option>Hardware</option>
-                        <option>Software</option>
-                        <option>Rede</option>
+                      <select class="form-control" name="categoria">
+                        <option >Criação Usuário</option>
+                        <option >Impressora</option>
+                        <option >Hardware</option>
+                        <option >Software</option>
+                        <option >Rede</option>
                       </select>
                     </div>
                     
                     <div class="form-group">
                       <label>Descrição</label>
-                      <textarea class="form-control" rows="3"></textarea>
+                      <textarea class="form-control" rows="3" name="descricao"></textarea>
                     </div>
 
                     <div class="row mt-5">
