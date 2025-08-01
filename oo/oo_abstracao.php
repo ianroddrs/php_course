@@ -7,7 +7,20 @@
         public $nome = null;
         public $telefone = null;
         public $numFilhos = null;
+        public $cargo = null;
+        public $salario = null;
 
+
+        // getters setters (overloading / sobrecarga)
+        function __set($atributo, $valor){
+            $this->$atributo = $valor;
+        }
+
+        function __get($atributo){
+            return $this->$atributo;
+        }
+
+        /*
         // getters setters
         function setNome($nome){
             $this->nome = $nome;
@@ -32,6 +45,7 @@
         function getTelefone(){
             return $this->telefone;
         }
+        */
 
         // métodos
         function resumirCadFunc(){
@@ -48,14 +62,19 @@
     $y = new Funcionario();
     $x = new Funcionario();
 
-    $y->setNome('José');
-    $y->setNumFilhos(2);
-    $y->settelefone(556372902);
-    echo $y->resumirCadFunc();
-    echo '<br>';
+    $y->__set('nome', 'José');
+    $y->__set('numFilhos', 2);
+
+    echo $y->__get('nome');
+
+    // $y->setNome('José');
+    // $y->setNumFilhos(2);
+    // $y->settelefone(556372902);
+    // echo $y->resumirCadFunc();
+    // echo '<br>';
     
-    $x->modificarNumFilhos(6);
-    echo $x->resumirCadFunc();
-    echo '<br>';
+    // $x->modificarNumFilhos(6);
+    // echo $x->resumirCadFunc();
+    // echo '<br>';
     
 ?>
