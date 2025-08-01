@@ -9,7 +9,7 @@
 
     $texto =  implode('#', $_POST) . PHP_EOL;
 
-    $arquivo = fopen('arquivo.hd', 'a');
+    $arquivo = fopen('../../app_help_desk/arquivo.hd', 'a');
     fwrite($arquivo, $texto);
     fclose($arquivo);
 
