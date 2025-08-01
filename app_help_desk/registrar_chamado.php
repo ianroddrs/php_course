@@ -1,8 +1,11 @@
 <?php
 
+    session_start();
+
     $_POST['titulo'] = str_replace('#', '-', $_POST['titulo']);
     $_POST['categoria'] = str_replace('#', '-', $_POST['categoria']);
     $_POST['descricao'] = str_replace('#', '-', $_POST['descricao']);
+    $_POST['id'] = $_SESSION['id'];
 
     $texto =  implode('#', $_POST) . PHP_EOL;
 

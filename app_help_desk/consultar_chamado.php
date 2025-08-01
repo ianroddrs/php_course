@@ -48,7 +48,13 @@
             
             <div class="card-body">
 
-              <?php foreach($chamados as $chamado){ ?>
+              <?php 
+              
+                foreach($chamados as $chamado){ 
+                  if($_SESSION['perfil_id'] == 2 && $_SESSION['id'] != $chamado[3]){
+                    continue;
+                  }
+              ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
                   <h5 class="card-title"><?php echo $chamado[0] ?></h5>
