@@ -5,9 +5,11 @@
     require "./bibliotecas/PHPMailer/PHPMailer.php";
     require "./bibliotecas/PHPMailer/POP3.php";
     require "./bibliotecas/PHPMailer/SMTP.php";
+    require "../../../app_send_mail/app_send_mail.php";
 
     use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Ex;
+    use PHPMailer\PHPMailer\Exception;
+    use AppSendMail\AppSendMail;
 
     class Mensagem {
         private $para = null;
@@ -45,18 +47,19 @@
         $mail = new PHPMailer(true);
     
         try {
+            $appSendMail = new AppSendMail();
             //Server settings
-            $mail->SMTPDebug = 2;                      //Enable verbose debug output
+            $mail->SMTPDebug = false;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'email';                     //SMTP username
-            $mail->Password   = 'senha';                               //SMTP password
+            $mail->Username   = $appSendMail->Username;                     //SMTP username
+            $mail->Password   = $appSendMail->Password;                            //SMTP password
             $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
             //Recipients
-            $mail->setFrom('email', 'nome');
+            $mail->setFrom($appSendMail->Username);
             $mail->addAddress($mensagem->para);     //Add a recipient
             // $mail->addAddress('ellen@example.com');               //Name is optional
             // $mail->addReplyTo('info@example.com', 'Information');
@@ -79,7 +82,6 @@
             $mensagem->status['descricao_status'] = 'E-mail enviado com sucesso';
 
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             $mensagem->status['codigo_status'] = 2;
             $mensagem->status['descricao_status'] = 'Não foi possível enivar esse e-email, por favor tente novamente mais tarde. Detalhes do erro: ' . $mail->ErrorInfo;
         }
@@ -109,6 +111,21 @@
 
             <div class="row">
                 <div class="col-md-12">
+                    <?php if($mensagem->status['codigo_status'] == 1){ ?>
+                        <div class="container">
+                            <h1 class="display-4 text-success">Sucesso</h1>
+                            <p><?= $mensagem->status['descricao_status'] ?></p>
+                            <a href="index.php" class="btn btn-success btn-lg mt-5 text-white">Voltar</a>
+                        </div>
+                    <?php } ?>
+                        
+                    <?php if($mensagem->status['codigo_status'] == 2){ ?>
+                        <div class="container">
+                            <h1 class="display-4 text-danger">Erro</h1>
+                            <p><?= $mensagem->status['descricao_status'] ?></p>
+                            <a href="index.php" class="btn btn-success btn-lg mt-5 text-white">Voltar</a>
+                        </div>
+                    <?php } ?>
 
                 </div>
             </div>
